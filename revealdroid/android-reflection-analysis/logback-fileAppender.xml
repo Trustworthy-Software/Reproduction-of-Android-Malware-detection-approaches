@@ -1,0 +1,31 @@
+<configuration>
+
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>logs/root.log</file>
+		<append>false</append>
+		
+   <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
+		<discriminator class="edu.uci.seal.ThreadNameBasedDiscriminator" />
+		<sift>
+			<appender class="ch.qos.logback.core.FileAppender">
+				<file>logs/${toolName}-${apkName}-${threadName}.log</file>
+				<layout class="ch.qos.logback.classic.PatternLayout">
+					<pattern>%d{HH:mm:ss:SSS} | %-5level | %logger{35} | ${apkName} | %msg%n%rEx
+					</pattern>
+				</layout>
+				<append>false</append>
+			</appender>
+		</sift>
+	</appender>
+	
+	<root level="DEBUG">
+		<appender-ref ref="SIFT" />
+	</root>
+</configuration>

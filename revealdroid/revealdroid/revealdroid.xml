@@ -1,0 +1,1296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="revealdroid" default="all">
+  
+  
+  <property file="revealdroid.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.zip"/>
+    <include name="*.ear"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.80.0_102" value="${jdk.home.1.80.0_102}/bin"/>
+  <path id="jdk.classpath.1.80.0_102">
+    <fileset dir="${jdk.home.1.80.0_102}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="lib/ant-javafx.jar"/>
+      <include name="lib/dt.jar"/>
+      <include name="lib/javafx-mx.jar"/>
+      <include name="lib/jconsole.jar"/>
+      <include name="lib/packager.jar"/>
+      <include name="lib/sa-jdi.jar"/>
+      <include name="lib/tools.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.80.0_102}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.80.0_102}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.80.0_102"/>
+  
+  
+  <!-- Global Libraries -->
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module handleflowdroid -->
+  
+  <dirname property="module.handleflowdroid.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.handleflowdroid" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.handleflowdroid" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.handleflowdroid" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.handleflowdroid" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="handleflowdroid.output.dir" value="${module.handleflowdroid.basedir}/../handleflowdroid/bin"/>
+  <property name="handleflowdroid.testoutput.dir" value="${module.handleflowdroid.basedir}/../handleflowdroid/bin"/>
+  
+  <path id="handleflowdroid.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="handleflowdroid.module.production.classpath">
+    <path refid="${module.jdk.classpath.handleflowdroid}"/>
+  </path>
+  
+  <path id="handleflowdroid.runtime.production.module.classpath">
+    <pathelement location="${handleflowdroid.output.dir}"/>
+  </path>
+  
+  <path id="handleflowdroid.module.classpath">
+    <pathelement location="${handleflowdroid.output.dir}"/>
+    <path refid="${module.jdk.classpath.handleflowdroid}"/>
+  </path>
+  
+  <path id="handleflowdroid.runtime.module.classpath">
+    <pathelement location="${handleflowdroid.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.handleflowdroid">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.handleflowdroid">
+    <patternset refid="excluded.from.module.handleflowdroid"/>
+  </patternset>
+  
+  <path id="handleflowdroid.module.sourcepath">
+    <dirset dir="${module.handleflowdroid.basedir}/../handleflowdroid">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.handleflowdroid" depends="compile.module.handleflowdroid.production,compile.module.handleflowdroid.tests" description="Compile module handleflowdroid"/>
+  
+  <target name="compile.module.handleflowdroid.production" description="Compile module handleflowdroid; production classes">
+    <mkdir dir="${handleflowdroid.output.dir}"/>
+    <javac destdir="${handleflowdroid.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.handleflowdroid}/javac">
+      <compilerarg line="${compiler.args.handleflowdroid}"/>
+      <bootclasspath refid="handleflowdroid.module.bootclasspath"/>
+      <classpath refid="handleflowdroid.module.production.classpath"/>
+      <src refid="handleflowdroid.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.handleflowdroid"/>
+    </javac>
+    
+    <copy todir="${handleflowdroid.output.dir}">
+      <fileset dir="${module.handleflowdroid.basedir}/../handleflowdroid/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.handleflowdroid.tests" depends="compile.module.handleflowdroid.production" description="compile module handleflowdroid; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.handleflowdroid" description="cleanup module">
+    <delete dir="${handleflowdroid.output.dir}"/>
+    <delete dir="${handleflowdroid.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module heros -->
+  
+  <dirname property="module.heros.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.heros" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.heros" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.heros" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.heros" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="heros.output.dir" value="${module.heros.basedir}/../heros/target/classes"/>
+  <property name="heros.testoutput.dir" value="${module.heros.basedir}/../heros/target/classes"/>
+  
+  <path id="heros.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="heros.module.production.classpath">
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/junit.jar"/>
+    <pathelement location="${basedir}/../heros/org.hamcrest.core_1.3.0.jar"/>
+    <pathelement location="${basedir}/../heros/mockito-all-1.9.5.jar"/>
+    <path refid="${module.jdk.classpath.heros}"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+  </path>
+  
+  <path id="heros.runtime.production.module.classpath">
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/junit.jar"/>
+    <pathelement location="${basedir}/../heros/org.hamcrest.core_1.3.0.jar"/>
+    <pathelement location="${basedir}/../heros/mockito-all-1.9.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+  </path>
+  
+  <path id="heros.module.classpath">
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/junit.jar"/>
+    <pathelement location="${basedir}/../heros/org.hamcrest.core_1.3.0.jar"/>
+    <pathelement location="${basedir}/../heros/mockito-all-1.9.5.jar"/>
+    <path refid="${module.jdk.classpath.heros}"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+  </path>
+  
+  <path id="heros.runtime.module.classpath">
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/junit.jar"/>
+    <pathelement location="${basedir}/../heros/org.hamcrest.core_1.3.0.jar"/>
+    <pathelement location="${basedir}/../heros/mockito-all-1.9.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.heros">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.heros">
+    <patternset refid="excluded.from.module.heros"/>
+  </patternset>
+  
+  <path id="heros.module.sourcepath">
+    <dirset dir="${module.heros.basedir}/../heros">
+      <include name="src"/>
+      <include name="test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.heros" depends="compile.module.heros.production,compile.module.heros.tests" description="Compile module heros"/>
+  
+  <target name="compile.module.heros.production" description="Compile module heros; production classes">
+    <mkdir dir="${heros.output.dir}"/>
+    <javac destdir="${heros.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.heros}/javac">
+      <compilerarg line="${compiler.args.heros}"/>
+      <bootclasspath refid="heros.module.bootclasspath"/>
+      <classpath refid="heros.module.production.classpath"/>
+      <src refid="heros.module.sourcepath"/>
+      <src location="${basedir}/../heros/"/>
+      <patternset refid="excluded.from.compilation.heros"/>
+    </javac>
+    
+    <copy todir="${heros.output.dir}">
+      <fileset dir="${module.heros.basedir}/../heros/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.heros.basedir}/../heros/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.heros.tests" depends="compile.module.heros.production" description="compile module heros; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.heros" description="cleanup module">
+    <delete dir="${heros.output.dir}"/>
+    <delete dir="${heros.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module jasmin -->
+  
+  <dirname property="module.jasmin.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.jasmin" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.jasmin" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.jasmin" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.jasmin" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="jasmin.output.dir" value="${module.jasmin.basedir}/../jasmin/classes"/>
+  <property name="jasmin.testoutput.dir" value="${module.jasmin.basedir}/../jasmin/classes"/>
+  
+  <path id="jasmin.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="jasmin.module.production.classpath">
+    <path refid="${module.jdk.classpath.jasmin}"/>
+    <pathelement location="${basedir}/../jasmin/libs/java_cup.jar"/>
+  </path>
+  
+  <path id="jasmin.runtime.production.module.classpath">
+    <pathelement location="${jasmin.output.dir}"/>
+    <pathelement location="${basedir}/../jasmin/libs/java_cup.jar"/>
+  </path>
+  
+  <path id="jasmin.module.classpath">
+    <pathelement location="${jasmin.output.dir}"/>
+    <path refid="${module.jdk.classpath.jasmin}"/>
+    <pathelement location="${basedir}/../jasmin/libs/java_cup.jar"/>
+  </path>
+  
+  <path id="jasmin.runtime.module.classpath">
+    <pathelement location="${jasmin.output.dir}"/>
+    <pathelement location="${basedir}/../jasmin/libs/java_cup.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.jasmin">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.jasmin">
+    <patternset refid="excluded.from.module.jasmin"/>
+  </patternset>
+  
+  <path id="jasmin.module.sourcepath">
+    <dirset dir="${module.jasmin.basedir}/../jasmin">
+      <include name="src"/>
+      <include name="lib/jas/src"/>
+      <include name="generated"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.jasmin" depends="compile.module.jasmin.production,compile.module.jasmin.tests" description="Compile module jasmin"/>
+  
+  <target name="compile.module.jasmin.production" description="Compile module jasmin; production classes">
+    <mkdir dir="${jasmin.output.dir}"/>
+    <javac destdir="${jasmin.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.jasmin}/javac">
+      <compilerarg line="${compiler.args.jasmin}"/>
+      <bootclasspath refid="jasmin.module.bootclasspath"/>
+      <classpath refid="jasmin.module.production.classpath"/>
+      <src refid="jasmin.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.jasmin"/>
+    </javac>
+    
+    <copy todir="${jasmin.output.dir}">
+      <fileset dir="${module.jasmin.basedir}/../jasmin/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.jasmin.basedir}/../jasmin/lib/jas/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.jasmin.basedir}/../jasmin/generated">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.jasmin.tests" depends="compile.module.jasmin.production" description="compile module jasmin; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.jasmin" description="cleanup module">
+    <delete dir="${jasmin.output.dir}"/>
+    <delete dir="${jasmin.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module soot -->
+  
+  <dirname property="module.soot.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.soot" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.soot" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.soot" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.soot" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="soot.output.dir" value="${module.soot.basedir}/../soot/classes"/>
+  <property name="soot.testoutput.dir" value="${module.soot.basedir}/../soot/classes"/>
+  
+  <path id="soot.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="soot.module.production.classpath">
+    <path refid="${module.jdk.classpath.soot}"/>
+    <pathelement location="${jasmin.output.dir}"/>
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../soot/libs/polyglot.jar"/>
+    <pathelement location="${basedir}/../soot/libs/AXMLPrinter2.jar"/>
+    <pathelement location="${basedir}/../soot/libs/hamcrest-all-1.3.jar"/>
+    <pathelement location="${basedir}/../soot/libs/junit-4.11.jar"/>
+    <pathelement location="${basedir}/../soot/libs/cglib-nodep-2.2.2.jar"/>
+    <pathelement location="${basedir}/../soot/libs/javassist-3.18.2-GA.jar"/>
+    <pathelement location="${basedir}/../soot/libs/mockito-all-1.10.8.jar"/>
+    <pathelement location="${basedir}/../soot/libs/powermock-mockito-1.6.1-full.jar"/>
+    <pathelement location="${basedir}/../soot/libs/jboss-common-core-2.5.0.Final.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${basedir}/../soot/libs/asm-debug-all-5.0.3.jar"/>
+    <pathelement location="${basedir}/../soot/libs/dexlib2-2.1.2-87d10dac.jar"/>
+    <pathelement location="${basedir}/../soot/libs/util-2.2b4-adb12356.jar"/>
+  </path>
+  
+  <path id="soot.runtime.production.module.classpath">
+    <pathelement location="${soot.output.dir}"/>
+    <path refid="jasmin.runtime.production.module.classpath"/>
+    <path refid="heros.runtime.production.module.classpath"/>
+    <pathelement location="${basedir}/../soot/libs/polyglot.jar"/>
+    <pathelement location="${basedir}/../soot/libs/AXMLPrinter2.jar"/>
+    <pathelement location="${basedir}/../soot/libs/hamcrest-all-1.3.jar"/>
+    <pathelement location="${basedir}/../soot/libs/junit-4.11.jar"/>
+    <pathelement location="${basedir}/../soot/libs/cglib-nodep-2.2.2.jar"/>
+    <pathelement location="${basedir}/../soot/libs/javassist-3.18.2-GA.jar"/>
+    <pathelement location="${basedir}/../soot/libs/mockito-all-1.10.8.jar"/>
+    <pathelement location="${basedir}/../soot/libs/powermock-mockito-1.6.1-full.jar"/>
+    <pathelement location="${basedir}/../soot/libs/jboss-common-core-2.5.0.Final.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${basedir}/../soot/libs/asm-debug-all-5.0.3.jar"/>
+    <pathelement location="${basedir}/../soot/libs/dexlib2-2.1.2-87d10dac.jar"/>
+    <pathelement location="${basedir}/../soot/libs/util-2.2b4-adb12356.jar"/>
+  </path>
+  
+  <path id="soot.module.classpath">
+    <pathelement location="${soot.output.dir}"/>
+    <path refid="${module.jdk.classpath.soot}"/>
+    <pathelement location="${jasmin.output.dir}"/>
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../soot/libs/polyglot.jar"/>
+    <pathelement location="${basedir}/../soot/libs/AXMLPrinter2.jar"/>
+    <pathelement location="${basedir}/../soot/libs/hamcrest-all-1.3.jar"/>
+    <pathelement location="${basedir}/../soot/libs/junit-4.11.jar"/>
+    <pathelement location="${basedir}/../soot/libs/cglib-nodep-2.2.2.jar"/>
+    <pathelement location="${basedir}/../soot/libs/javassist-3.18.2-GA.jar"/>
+    <pathelement location="${basedir}/../soot/libs/mockito-all-1.10.8.jar"/>
+    <pathelement location="${basedir}/../soot/libs/powermock-mockito-1.6.1-full.jar"/>
+    <pathelement location="${basedir}/../soot/libs/jboss-common-core-2.5.0.Final.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${basedir}/../soot/libs/asm-debug-all-5.0.3.jar"/>
+    <pathelement location="${basedir}/../soot/libs/dexlib2-2.1.2-87d10dac.jar"/>
+    <pathelement location="${basedir}/../soot/libs/util-2.2b4-adb12356.jar"/>
+  </path>
+  
+  <path id="soot.runtime.module.classpath">
+    <pathelement location="${soot.output.dir}"/>
+    <path refid="jasmin.runtime.module.classpath"/>
+    <path refid="heros.runtime.module.classpath"/>
+    <pathelement location="${basedir}/../soot/libs/polyglot.jar"/>
+    <pathelement location="${basedir}/../soot/libs/AXMLPrinter2.jar"/>
+    <pathelement location="${basedir}/../soot/libs/hamcrest-all-1.3.jar"/>
+    <pathelement location="${basedir}/../soot/libs/junit-4.11.jar"/>
+    <pathelement location="${basedir}/../soot/libs/cglib-nodep-2.2.2.jar"/>
+    <pathelement location="${basedir}/../soot/libs/javassist-3.18.2-GA.jar"/>
+    <pathelement location="${basedir}/../soot/libs/mockito-all-1.10.8.jar"/>
+    <pathelement location="${basedir}/../soot/libs/powermock-mockito-1.6.1-full.jar"/>
+    <pathelement location="${basedir}/../soot/libs/jboss-common-core-2.5.0.Final.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${basedir}/../soot/libs/asm-debug-all-5.0.3.jar"/>
+    <pathelement location="${basedir}/../soot/libs/dexlib2-2.1.2-87d10dac.jar"/>
+    <pathelement location="${basedir}/../soot/libs/util-2.2b4-adb12356.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.soot">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.soot">
+    <patternset refid="excluded.from.module.soot"/>
+  </patternset>
+  
+  <path id="soot.module.sourcepath">
+    <dirset dir="${module.soot.basedir}/../soot">
+      <include name="src"/>
+      <include name="tests"/>
+      <include name="generated/jastadd"/>
+      <include name="generated/options"/>
+      <include name="generated/singletons"/>
+      <include name="generated/sablecc"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.soot" depends="compile.module.soot.production,compile.module.soot.tests" description="Compile module soot"/>
+  
+  <target name="compile.module.soot.production" depends="compile.module.jasmin,compile.module.heros" description="Compile module soot; production classes">
+    <mkdir dir="${soot.output.dir}"/>
+    <javac destdir="${soot.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.soot}/javac">
+      <compilerarg line="${compiler.args.soot}"/>
+      <bootclasspath refid="soot.module.bootclasspath"/>
+      <classpath refid="soot.module.production.classpath"/>
+      <src refid="soot.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.soot"/>
+    </javac>
+    
+    <copy todir="${soot.output.dir}">
+      <fileset dir="${module.soot.basedir}/../soot/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.soot.basedir}/../soot/tests">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.soot.basedir}/../soot/tutorial">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.soot.basedir}/../soot/generated/jastadd">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.soot.basedir}/../soot/generated/options">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.soot.basedir}/../soot/generated/singletons">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.soot.basedir}/../soot/generated/sablecc">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.soot.tests" depends="compile.module.soot.production" description="compile module soot; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.soot" description="cleanup module">
+    <delete dir="${soot.output.dir}"/>
+    <delete dir="${soot.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module soot-infoflow -->
+  
+  <dirname property="module.soot-infoflow.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.soot-infoflow" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.soot-infoflow" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.soot-infoflow" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.soot-infoflow" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="soot-infoflow.output.dir" value="${module.soot-infoflow.basedir}/../soot-infoflow/bin"/>
+  <property name="soot-infoflow.testoutput.dir" value="${module.soot-infoflow.basedir}/../soot-infoflow/bin"/>
+  
+  <path id="soot-infoflow.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="soot-infoflow.module.production.classpath">
+    <path refid="${module.jdk.classpath.soot-infoflow}"/>
+    <pathelement location="${soot.output.dir}"/>
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/cos.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/j2ee.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/junit.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/org.hamcrest.core_1.3.0.jar"/>
+  </path>
+  
+  <path id="soot-infoflow.runtime.production.module.classpath">
+    <pathelement location="${soot-infoflow.output.dir}"/>
+    <path refid="soot.runtime.production.module.classpath"/>
+    <path refid="heros.runtime.production.module.classpath"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/cos.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/j2ee.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/junit.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/org.hamcrest.core_1.3.0.jar"/>
+  </path>
+  
+  <path id="soot-infoflow.module.classpath">
+    <path refid="${module.jdk.classpath.soot-infoflow}"/>
+    <pathelement location="${soot-infoflow.output.dir}"/>
+    <pathelement location="${soot.output.dir}"/>
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/cos.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/j2ee.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/junit.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/org.hamcrest.core_1.3.0.jar"/>
+  </path>
+  
+  <path id="soot-infoflow.runtime.module.classpath">
+    <pathelement location="${soot-infoflow.output.dir}"/>
+    <path refid="soot.runtime.module.classpath"/>
+    <path refid="heros.runtime.module.classpath"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/cos.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/j2ee.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/junit.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/org.hamcrest.core_1.3.0.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.soot-infoflow">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.soot-infoflow">
+    <patternset refid="excluded.from.module.soot-infoflow"/>
+  </patternset>
+  
+  <path id="soot-infoflow.module.sourcepath">
+    <dirset dir="${module.soot-infoflow.basedir}/../soot-infoflow">
+      <include name="src"/>
+      <include name="test"/>
+      <include name="securiBench"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.soot-infoflow" depends="compile.module.soot-infoflow.production,compile.module.soot-infoflow.tests" description="Compile module soot-infoflow"/>
+  
+  <target name="compile.module.soot-infoflow.production" depends="compile.module.soot,compile.module.heros" description="Compile module soot-infoflow; production classes">
+    <mkdir dir="${soot-infoflow.output.dir}"/>
+    <javac destdir="${soot-infoflow.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.soot-infoflow}/javac">
+      <compilerarg line="${compiler.args.soot-infoflow}"/>
+      <bootclasspath refid="soot-infoflow.module.bootclasspath"/>
+      <classpath refid="soot-infoflow.module.production.classpath"/>
+      <src refid="soot-infoflow.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.soot-infoflow"/>
+    </javac>
+    
+    <copy todir="${soot-infoflow.output.dir}">
+      <fileset dir="${module.soot-infoflow.basedir}/../soot-infoflow/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.soot-infoflow.basedir}/../soot-infoflow/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.soot-infoflow.basedir}/../soot-infoflow/securiBench">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.soot-infoflow.tests" depends="compile.module.soot-infoflow.production" description="compile module soot-infoflow; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.soot-infoflow" description="cleanup module">
+    <delete dir="${soot-infoflow.output.dir}"/>
+    <delete dir="${soot-infoflow.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module soot-infoflow-android -->
+  
+  <dirname property="module.soot-infoflow-android.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.soot-infoflow-android" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.soot-infoflow-android" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.soot-infoflow-android" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.soot-infoflow-android" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="soot-infoflow-android.output.dir" value="${module.soot-infoflow-android.basedir}/../soot-infoflow-android/bin"/>
+  <property name="soot-infoflow-android.testoutput.dir" value="${module.soot-infoflow-android.basedir}/../soot-infoflow-android/bin"/>
+  
+  <path id="soot-infoflow-android.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="soot-infoflow-android.module.production.classpath">
+    <pathelement location="${soot.output.dir}"/>
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow-android/lib/AXMLPrinter2.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow-android/lib/commons-io-2.4.jar"/>
+    <pathelement location="${soot-infoflow.output.dir}"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/junit.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/org.hamcrest.core_1.3.0.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+    <path refid="${module.jdk.classpath.soot-infoflow-android}"/>
+    <pathelement location="${basedir}/../soot-infoflow-android/lib/axml-2.0.jar"/>
+    <pathelement location="${handleflowdroid.output.dir}"/>
+  </path>
+  
+  <path id="soot-infoflow-android.runtime.production.module.classpath">
+    <pathelement location="${soot-infoflow-android.output.dir}"/>
+    <path refid="soot.runtime.production.module.classpath"/>
+    <pathelement location="${basedir}/../soot-infoflow-android/lib/AXMLPrinter2.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow-android/lib/commons-io-2.4.jar"/>
+    <path refid="soot-infoflow.runtime.production.module.classpath"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow-android/lib/axml-2.0.jar"/>
+    <path refid="handleflowdroid.runtime.production.module.classpath"/>
+  </path>
+  
+  <path id="soot-infoflow-android.module.classpath">
+    <pathelement location="${soot-infoflow-android.output.dir}"/>
+    <pathelement location="${soot.output.dir}"/>
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow-android/lib/AXMLPrinter2.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow-android/lib/commons-io-2.4.jar"/>
+    <pathelement location="${soot-infoflow.output.dir}"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/junit.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/org.hamcrest.core_1.3.0.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+    <path refid="${module.jdk.classpath.soot-infoflow-android}"/>
+    <pathelement location="${basedir}/../soot-infoflow-android/lib/axml-2.0.jar"/>
+    <pathelement location="${handleflowdroid.output.dir}"/>
+  </path>
+  
+  <path id="soot-infoflow-android.runtime.module.classpath">
+    <pathelement location="${soot-infoflow-android.output.dir}"/>
+    <path refid="soot.runtime.module.classpath"/>
+    <pathelement location="${basedir}/../soot-infoflow-android/lib/AXMLPrinter2.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow-android/lib/commons-io-2.4.jar"/>
+    <path refid="soot-infoflow.runtime.module.classpath"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow-android/lib/axml-2.0.jar"/>
+    <path refid="handleflowdroid.runtime.module.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.soot-infoflow-android">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.soot-infoflow-android">
+    <patternset refid="excluded.from.module.soot-infoflow-android"/>
+  </patternset>
+  
+  <path id="soot-infoflow-android.module.sourcepath">
+    <dirset dir="${module.soot-infoflow-android.basedir}/../soot-infoflow-android">
+      <include name="src"/>
+      <include name="test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.soot-infoflow-android" depends="compile.module.soot-infoflow-android.production,compile.module.soot-infoflow-android.tests" description="Compile module soot-infoflow-android"/>
+  
+  <target name="compile.module.soot-infoflow-android.production" depends="compile.module.soot,compile.module.soot-infoflow,compile.module.handleflowdroid" description="Compile module soot-infoflow-android; production classes">
+    <mkdir dir="${soot-infoflow-android.output.dir}"/>
+    <javac destdir="${soot-infoflow-android.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.soot-infoflow-android}/javac">
+      <compilerarg line="${compiler.args.soot-infoflow-android}"/>
+      <bootclasspath refid="soot-infoflow-android.module.bootclasspath"/>
+      <classpath refid="soot-infoflow-android.module.production.classpath"/>
+      <src refid="soot-infoflow-android.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.soot-infoflow-android"/>
+    </javac>
+    
+    <copy todir="${soot-infoflow-android.output.dir}">
+      <fileset dir="${module.soot-infoflow-android.basedir}/../soot-infoflow-android/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.soot-infoflow-android.basedir}/../soot-infoflow-android/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.soot-infoflow-android.tests" depends="compile.module.soot-infoflow-android.production" description="compile module soot-infoflow-android; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.soot-infoflow-android" description="cleanup module">
+    <delete dir="${soot-infoflow-android.output.dir}"/>
+    <delete dir="${soot-infoflow-android.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module seal-utils -->
+  
+  <dirname property="module.seal-utils.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.seal-utils" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.seal-utils" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.seal-utils" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.seal-utils" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="seal-utils.output.dir" value="${module.seal-utils.basedir}/../seal-utils/bin"/>
+  <property name="seal-utils.testoutput.dir" value="${module.seal-utils.basedir}/../seal-utils/bin"/>
+  
+  <path id="seal-utils.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="seal-utils.module.production.classpath">
+    <path refid="${module.jdk.classpath.seal-utils}"/>
+	<pathelement location="${basedir}/../seal-utils/lib/javassist.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/logback-core-1.1.2.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/AXMLPrinter2.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/logback-classic-1.1.2.jar"/>
+    <pathelement location="${soot.output.dir}"/>
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${soot-infoflow-android.output.dir}"/>
+    <pathelement location="${soot-infoflow.output.dir}"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/junit.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/org.hamcrest.core_1.3.0.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/slf4j-api-1.7.6.jar"/>
+    <pathelement location="${basedir}/../android-reflection-analysis/lib/javatuples-1.2.jar"/>
+  </path>
+  
+  <path id="seal-utils.runtime.production.module.classpath">
+    <pathelement location="${seal-utils.output.dir}"/>
+    <pathelement location="${basedir}/../seal-utils/lib/logback-core-1.1.2.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/AXMLPrinter2.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/logback-classic-1.1.2.jar"/>
+    <path refid="soot.runtime.production.module.classpath"/>
+    <path refid="soot-infoflow-android.runtime.production.module.classpath"/>
+    <path refid="soot-infoflow.runtime.production.module.classpath"/>
+    <pathelement location="${basedir}/../seal-utils/lib/slf4j-api-1.7.6.jar"/>
+    <pathelement location="${basedir}/../android-reflection-analysis/lib/javatuples-1.2.jar"/>
+  </path>
+  
+  <path id="seal-utils.module.classpath">
+    <pathelement location="${seal-utils.output.dir}"/>
+    <path refid="${module.jdk.classpath.seal-utils}"/>
+    <pathelement location="${basedir}/../seal-utils/lib/logback-core-1.1.2.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/AXMLPrinter2.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/logback-classic-1.1.2.jar"/>
+    <pathelement location="${soot.output.dir}"/>
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${soot-infoflow-android.output.dir}"/>
+    <pathelement location="${soot-infoflow.output.dir}"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/junit.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/org.hamcrest.core_1.3.0.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/slf4j-api-1.7.6.jar"/>
+    <pathelement location="${basedir}/../android-reflection-analysis/lib/javatuples-1.2.jar"/>
+  </path>
+  
+  <path id="seal-utils.runtime.module.classpath">
+    <pathelement location="${seal-utils.output.dir}"/>
+    <pathelement location="${basedir}/../seal-utils/lib/logback-core-1.1.2.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/AXMLPrinter2.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../seal-utils/lib/logback-classic-1.1.2.jar"/>
+    <path refid="soot.runtime.module.classpath"/>
+    <path refid="soot-infoflow-android.runtime.module.classpath"/>
+    <path refid="soot-infoflow.runtime.module.classpath"/>
+    <pathelement location="${basedir}/../seal-utils/lib/slf4j-api-1.7.6.jar"/>
+    <pathelement location="${basedir}/../android-reflection-analysis/lib/javatuples-1.2.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.seal-utils">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.seal-utils">
+    <patternset refid="excluded.from.module.seal-utils"/>
+  </patternset>
+  
+  <path id="seal-utils.module.sourcepath">
+    <dirset dir="${module.seal-utils.basedir}/../seal-utils">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.seal-utils" depends="compile.module.seal-utils.production,compile.module.seal-utils.tests" description="Compile module seal-utils"/>
+  
+  <target name="compile.module.seal-utils.production" depends="compile.module.soot,compile.module.soot-infoflow-android,compile.module.soot-infoflow" description="Compile module seal-utils; production classes">
+    <mkdir dir="${seal-utils.output.dir}"/>
+    <javac destdir="${seal-utils.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.seal-utils}/javac">
+      <compilerarg line="${compiler.args.seal-utils}"/>
+      <bootclasspath refid="seal-utils.module.bootclasspath"/>
+      <classpath refid="seal-utils.module.production.classpath"/>
+      <src refid="seal-utils.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.seal-utils"/>
+    </javac>
+    
+    <copy todir="${seal-utils.output.dir}">
+      <fileset dir="${module.seal-utils.basedir}/../seal-utils/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.seal-utils.tests" depends="compile.module.seal-utils.production" description="compile module seal-utils; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.seal-utils" description="cleanup module">
+    <delete dir="${seal-utils.output.dir}"/>
+    <delete dir="${seal-utils.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module android-reflection-analysis -->
+  
+  <dirname property="module.android-reflection-analysis.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.android-reflection-analysis" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.android-reflection-analysis" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.android-reflection-analysis" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.android-reflection-analysis" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="android-reflection-analysis.output.dir" value="${module.android-reflection-analysis.basedir}/../android-reflection-analysis/bin"/>
+  <property name="android-reflection-analysis.testoutput.dir" value="${module.android-reflection-analysis.basedir}/../android-reflection-analysis/bin"/>
+  
+  <path id="android-reflection-analysis.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="android-reflection-analysis.module.production.classpath">
+    <path refid="${module.jdk.classpath.android-reflection-analysis}"/>
+    <pathelement location="${seal-utils.output.dir}"/>
+    <pathelement location="${soot.output.dir}"/>
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${basedir}/../android-reflection-analysis/lib/javatuples-1.2.jar"/>
+    <pathelement location="${basedir}/../android-reflection-analysis/lib/jgrapht-jdk1.6.jar"/>
+  </path>
+  
+  <path id="android-reflection-analysis.runtime.production.module.classpath">
+    <pathelement location="${android-reflection-analysis.output.dir}"/>
+    <path refid="seal-utils.runtime.production.module.classpath"/>
+    <path refid="soot.runtime.production.module.classpath"/>
+    <pathelement location="${basedir}/../android-reflection-analysis/lib/javatuples-1.2.jar"/>
+    <pathelement location="${basedir}/../android-reflection-analysis/lib/jgrapht-jdk1.6.jar"/>
+  </path>
+  
+  <path id="android-reflection-analysis.module.classpath">
+    <pathelement location="${android-reflection-analysis.output.dir}"/>
+    <path refid="${module.jdk.classpath.android-reflection-analysis}"/>
+    <pathelement location="${seal-utils.output.dir}"/>
+    <pathelement location="${soot.output.dir}"/>
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${basedir}/../android-reflection-analysis/lib/javatuples-1.2.jar"/>
+    <pathelement location="${basedir}/../android-reflection-analysis/lib/jgrapht-jdk1.6.jar"/>
+  </path>
+  
+  <path id="android-reflection-analysis.runtime.module.classpath">
+    <pathelement location="${android-reflection-analysis.output.dir}"/>
+    <path refid="seal-utils.runtime.module.classpath"/>
+    <path refid="soot.runtime.module.classpath"/>
+    <pathelement location="${basedir}/../android-reflection-analysis/lib/javatuples-1.2.jar"/>
+    <pathelement location="${basedir}/../android-reflection-analysis/lib/jgrapht-jdk1.6.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.android-reflection-analysis">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.android-reflection-analysis">
+    <patternset refid="excluded.from.module.android-reflection-analysis"/>
+  </patternset>
+  
+  <path id="android-reflection-analysis.module.sourcepath">
+    <dirset dir="${module.android-reflection-analysis.basedir}/../android-reflection-analysis">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.android-reflection-analysis" depends="compile.module.android-reflection-analysis.production,compile.module.android-reflection-analysis.tests" description="Compile module android-reflection-analysis"/>
+  
+  <target name="compile.module.android-reflection-analysis.production" depends="compile.module.seal-utils,compile.module.soot" description="Compile module android-reflection-analysis; production classes">
+    <mkdir dir="${android-reflection-analysis.output.dir}"/>
+    <javac destdir="${android-reflection-analysis.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.android-reflection-analysis}/javac">
+      <compilerarg line="${compiler.args.android-reflection-analysis}"/>
+      <bootclasspath refid="android-reflection-analysis.module.bootclasspath"/>
+      <classpath refid="android-reflection-analysis.module.production.classpath"/>
+      <src refid="android-reflection-analysis.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.android-reflection-analysis"/>
+    </javac>
+    
+    <copy todir="${android-reflection-analysis.output.dir}">
+      <fileset dir="${module.android-reflection-analysis.basedir}/../android-reflection-analysis/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.android-reflection-analysis.tests" depends="compile.module.android-reflection-analysis.production" description="compile module android-reflection-analysis; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.android-reflection-analysis" description="cleanup module">
+    <delete dir="${android-reflection-analysis.output.dir}"/>
+    <delete dir="${android-reflection-analysis.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module revealdroid -->
+  
+  <dirname property="module.revealdroid.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.revealdroid" value="${jdk.home.1.80.0_102}"/>
+  <property name="module.jdk.bin.revealdroid" value="${jdk.bin.1.80.0_102}"/>
+  <property name="module.jdk.classpath.revealdroid" value="jdk.classpath.1.80.0_102"/>
+  
+  <property name="compiler.args.revealdroid" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="revealdroid.output.dir" value="${module.revealdroid.basedir}/bin"/>
+  <property name="revealdroid.testoutput.dir" value="${module.revealdroid.basedir}/bin"/>
+  
+  <path id="revealdroid.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="revealdroid.module.production.classpath">
+    <pathelement location="${basedir}/lib/axml-2.0.jar"/>
+    <pathelement location="${basedir}/lib/weka.jar"/>
+    <pathelement location="${basedir}/lib/jcommander-1.36-SNAPSHOT.jar"/>
+    <pathelement location="${basedir}/lib/commons-io-2.4.jar"/>
+    <pathelement location="${basedir}/lib/apk-parser-all.jar"/>
+    <pathelement location="${basedir}/lib/libsvm.jar"/>
+    <pathelement location="${basedir}/lib/logback-classic-1.1.2.jar"/>
+    <pathelement location="${basedir}/lib/logback-core-1.1.2.jar"/>
+    <pathelement location="${basedir}/lib/slf4j-api-1.7.6.jar"/>
+    <pathelement location="${soot.output.dir}"/>
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${soot-infoflow.output.dir}"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/junit.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/org.hamcrest.core_1.3.0.jar"/>
+    <pathelement location="${soot-infoflow-android.output.dir}"/>
+    <pathelement location="${jasmin.output.dir}"/>
+    <pathelement location="${handleflowdroid.output.dir}"/>
+    <path refid="${module.jdk.classpath.revealdroid}"/>
+    <pathelement location="${basedir}/lib/android.jar"/>
+    <pathelement location="${android-reflection-analysis.output.dir}"/>
+    <pathelement location="${seal-utils.output.dir}"/>
+  </path>
+  
+  <path id="revealdroid.runtime.production.module.classpath">
+    <pathelement location="${revealdroid.output.dir}"/>
+    <pathelement location="${basedir}/lib/axml-2.0.jar"/>
+    <pathelement location="${basedir}/lib/weka.jar"/>
+    <pathelement location="${basedir}/lib/jcommander-1.36-SNAPSHOT.jar"/>
+    <pathelement location="${basedir}/lib/commons-io-2.4.jar"/>
+    <pathelement location="${basedir}/lib/apk-parser-all.jar"/>
+    <pathelement location="${basedir}/lib/libsvm.jar"/>
+    <pathelement location="${basedir}/lib/logback-classic-1.1.2.jar"/>
+    <pathelement location="${basedir}/lib/logback-core-1.1.2.jar"/>
+    <pathelement location="${basedir}/lib/slf4j-api-1.7.6.jar"/>
+    <path refid="soot.runtime.production.module.classpath"/>
+    <path refid="soot-infoflow.runtime.production.module.classpath"/>
+    <path refid="soot-infoflow-android.runtime.production.module.classpath"/>
+    <path refid="heros.runtime.production.module.classpath"/>
+    <path refid="jasmin.runtime.production.module.classpath"/>
+    <path refid="handleflowdroid.runtime.production.module.classpath"/>
+    <pathelement location="${basedir}/lib/android.jar"/>
+    <path refid="android-reflection-analysis.runtime.production.module.classpath"/>
+    <path refid="seal-utils.runtime.production.module.classpath"/>
+  </path>
+  
+  <path id="revealdroid.module.classpath">
+    <pathelement location="${revealdroid.output.dir}"/>
+    <pathelement location="${basedir}/lib/axml-2.0.jar"/>
+    <pathelement location="${basedir}/lib/weka.jar"/>
+    <pathelement location="${basedir}/lib/jcommander-1.36-SNAPSHOT.jar"/>
+    <pathelement location="${basedir}/lib/commons-io-2.4.jar"/>
+    <pathelement location="${basedir}/lib/apk-parser-all.jar"/>
+    <pathelement location="${basedir}/lib/libsvm.jar"/>
+    <pathelement location="${basedir}/lib/logback-classic-1.1.2.jar"/>
+    <pathelement location="${basedir}/lib/logback-core-1.1.2.jar"/>
+    <pathelement location="${basedir}/lib/slf4j-api-1.7.6.jar"/>
+    <pathelement location="${soot.output.dir}"/>
+    <pathelement location="${heros.output.dir}"/>
+    <pathelement location="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="${basedir}/../heros/guava-18.0.jar"/>
+    <pathelement location="${basedir}/../soot/libs/ant.jar"/>
+    <pathelement location="${soot-infoflow.output.dir}"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/junit.jar"/>
+    <pathelement location="${basedir}/../soot-infoflow/lib/org.hamcrest.core_1.3.0.jar"/>
+    <pathelement location="${soot-infoflow-android.output.dir}"/>
+    <pathelement location="${jasmin.output.dir}"/>
+    <pathelement location="${handleflowdroid.output.dir}"/>
+    <path refid="${module.jdk.classpath.revealdroid}"/>
+    <pathelement location="${basedir}/lib/android.jar"/>
+    <pathelement location="${android-reflection-analysis.output.dir}"/>
+    <pathelement location="${seal-utils.output.dir}"/>
+  </path>
+  
+  <path id="revealdroid.runtime.module.classpath">
+    <pathelement location="${revealdroid.output.dir}"/>
+    <pathelement location="${basedir}/lib/axml-2.0.jar"/>
+    <pathelement location="${basedir}/lib/weka.jar"/>
+    <pathelement location="${basedir}/lib/jcommander-1.36-SNAPSHOT.jar"/>
+    <pathelement location="${basedir}/lib/commons-io-2.4.jar"/>
+    <pathelement location="${basedir}/lib/apk-parser-all.jar"/>
+    <pathelement location="${basedir}/lib/libsvm.jar"/>
+    <pathelement location="${basedir}/lib/logback-classic-1.1.2.jar"/>
+    <pathelement location="${basedir}/lib/logback-core-1.1.2.jar"/>
+    <pathelement location="${basedir}/lib/slf4j-api-1.7.6.jar"/>
+    <path refid="soot.runtime.module.classpath"/>
+    <path refid="soot-infoflow.runtime.module.classpath"/>
+    <path refid="soot-infoflow-android.runtime.module.classpath"/>
+    <path refid="heros.runtime.module.classpath"/>
+    <path refid="jasmin.runtime.module.classpath"/>
+    <path refid="handleflowdroid.runtime.module.classpath"/>
+    <pathelement location="${basedir}/lib/android.jar"/>
+    <path refid="android-reflection-analysis.runtime.module.classpath"/>
+    <path refid="seal-utils.runtime.module.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.revealdroid">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.revealdroid">
+    <patternset refid="excluded.from.module.revealdroid"/>
+  </patternset>
+  
+  <path id="revealdroid.module.sourcepath">
+    <dirset dir="${module.revealdroid.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.revealdroid" depends="compile.module.revealdroid.production,compile.module.revealdroid.tests" description="Compile module revealdroid"/>
+  
+  <target name="compile.module.revealdroid.production" depends="compile.module.soot,compile.module.soot-infoflow,compile.module.soot-infoflow-android,compile.module.heros,compile.module.jasmin,compile.module.handleflowdroid,compile.module.android-reflection-analysis,compile.module.seal-utils" description="Compile module revealdroid; production classes">
+    <mkdir dir="${revealdroid.output.dir}"/>
+    <javac destdir="${revealdroid.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.revealdroid}/javac">
+      <compilerarg line="${compiler.args.revealdroid}"/>
+      <bootclasspath refid="revealdroid.module.bootclasspath"/>
+      <classpath refid="revealdroid.module.production.classpath"/>
+      <src refid="revealdroid.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.revealdroid"/>
+    </javac>
+    
+    <copy todir="${revealdroid.output.dir}">
+      <fileset dir="${module.revealdroid.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.revealdroid.tests" depends="compile.module.revealdroid.production" description="compile module revealdroid; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.revealdroid" description="cleanup module">
+    <delete dir="${revealdroid.output.dir}"/>
+    <delete dir="${revealdroid.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.handleflowdroid, clean.module.heros, clean.module.jasmin, clean.module.soot, clean.module.soot-infoflow, clean.module.soot-infoflow-android, clean.module.seal-utils, clean.module.android-reflection-analysis, clean.module.revealdroid" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.handleflowdroid, compile.module.heros, compile.module.jasmin, compile.module.soot, compile.module.soot-infoflow, compile.module.soot-infoflow-android, compile.module.seal-utils, compile.module.android-reflection-analysis, compile.module.revealdroid" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.revealdroid:jar" value="${basedir}/out/artifacts/revealdroid_jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.revealdroid.jar" value="${artifacts.temp.dir}/revealdroid.jar"/>
+  </target>
+  
+  <target name="artifact.revealdroid:jar" depends="init.artifacts, compile.module.revealdroid, compile.module.soot, compile.module.jasmin, compile.module.heros, compile.module.soot-infoflow, compile.module.soot-infoflow-android, compile.module.handleflowdroid, compile.module.android-reflection-analysis, compile.module.seal-utils" description="Build &#39;revealdroid:jar&#39; artifact">
+    <property name="artifact.temp.output.revealdroid:jar" value="${artifacts.temp.dir}/revealdroid_jar"/>
+    <mkdir dir="${artifact.temp.output.revealdroid:jar}"/>
+    <jar destfile="${temp.jar.path.revealdroid.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${revealdroid.output.dir}"/>
+      <zipfileset dir="${soot.output.dir}"/>
+      <zipfileset dir="${jasmin.output.dir}"/>
+      <zipfileset dir="${heros.output.dir}"/>
+      <zipfileset dir="${soot-infoflow.output.dir}"/>
+      <zipfileset dir="${soot-infoflow-android.output.dir}"/>
+      <zipfileset dir="${handleflowdroid.output.dir}"/>
+      <zipfileset dir="${android-reflection-analysis.output.dir}"/>
+      <zipfileset dir="${seal-utils.output.dir}"/>
+      <zipfileset src="${basedir}/lib/slf4j-api-1.7.6.jar"/>
+      <zipfileset src="${basedir}/lib/logback-classic-1.1.2.jar"/>
+      <zipfileset src="${basedir}/../soot-infoflow-android/lib/axml-2.0.jar"/>
+      <zipfileset src="${basedir}/../soot-infoflow/lib/j2ee.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/cglib-nodep-2.2.2.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/ant.jar"/>
+      <zipfileset src="${basedir}/lib/logback-core-1.1.2.jar"/>
+      <zipfileset src="${basedir}/lib/axml-2.0.jar"/>
+      <zipfileset src="${basedir}/../heros/guava-18.0.jar"/>
+      <zipfileset src="${basedir}/../seal-utils/lib/slf4j-api-1.7.6.jar"/>
+      <zipfileset src="${basedir}/../soot-infoflow-android/lib/AXMLPrinter2.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/hamcrest-all-1.3.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/junit-4.11.jar"/>
+      <zipfileset src="${basedir}/../soot-infoflow/lib/org.hamcrest.core_1.3.0.jar"/>
+      <zipfileset src="${basedir}/../heros/mockito-all-1.9.5.jar"/>
+      <zipfileset src="${basedir}/../jasmin/libs/java_cup.jar"/>
+      <zipfileset src="${basedir}/../seal-utils/lib/AXMLPrinter2.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/mockito-all-1.10.8.jar"/>
+      <zipfileset src="${basedir}/lib/jcommander-1.36-SNAPSHOT.jar"/>
+      <zipfileset src="${basedir}/../heros/junit.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/javassist-3.18.2-GA.jar"/>
+      <zipfileset src="${basedir}/../soot-infoflow/lib/slf4j-api-1.7.5.jar"/>
+      <zipfileset src="${basedir}/../soot-infoflow-android/lib/commons-io-2.4.jar"/>
+      <zipfileset src="${basedir}/lib/android.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/AXMLPrinter2.jar"/>
+      <zipfileset src="${basedir}/lib/commons-io-2.4.jar"/>
+      <zipfileset src="${basedir}/../heros/slf4j-simple-1.7.5.jar"/>
+      <zipfileset src="${basedir}/lib/libsvm.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/powermock-mockito-1.6.1-full.jar"/>
+      <zipfileset src="${basedir}/../soot-infoflow/lib/cos.jar"/>
+      <zipfileset src="${basedir}/../android-reflection-analysis/lib/javatuples-1.2.jar"/>
+      <zipfileset src="${basedir}/../seal-utils/lib/guava-18.0.jar"/>
+      <zipfileset src="${basedir}/../android-reflection-analysis/lib/jgrapht-jdk1.6.jar"/>
+      <zipfileset src="${basedir}/../heros/slf4j-api-1.7.5.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/asm-debug-all-5.0.3.jar"/>
+      <zipfileset src="${basedir}/../soot-infoflow/lib/junit.jar"/>
+      <zipfileset src="${basedir}/lib/apk-parser-all.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/polyglot.jar"/>
+      <zipfileset src="${basedir}/../seal-utils/lib/logback-classic-1.1.2.jar"/>
+      <zipfileset src="${basedir}/lib/weka.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/dexlib2-2.1.2-87d10dac.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/util-2.1.2-87d10dac.jar"/>
+      <zipfileset src="${basedir}/../heros/org.hamcrest.core_1.3.0.jar"/>
+      <zipfileset src="${basedir}/../seal-utils/lib/logback-core-1.1.2.jar"/>
+      <zipfileset src="${basedir}/../soot/libs/jboss-common-core-2.5.0.Final.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.revealdroid.jar}" tofile="${artifact.temp.output.revealdroid:jar}/revealdroid.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.revealdroid:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.revealdroid:jar}"/>
+    <copy todir="${artifact.output.revealdroid:jar}">
+      <fileset dir="${artifact.temp.output.revealdroid:jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

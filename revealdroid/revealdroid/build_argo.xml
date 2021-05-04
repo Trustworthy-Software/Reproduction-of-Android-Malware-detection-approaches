@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="revealdroid">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../home/joshua/Applications/eclipse-jee-luna/"/>
+    <property name="handleflowdroid.location" value="../handleflowdroid"/>
+    <property name="heros.location" value="../heros"/>
+    <property name="jasmin.location" value="../jasmin"/>
+    <property name="soot.location" value="../soot"/>
+    <property name="soot-infoflow.location" value="../soot-infoflow"/>
+    <property name="soot-infoflow-android.location" value="../soot-infoflow-android"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="jasmin.classpath">
+        <pathelement location="${jasmin.location}/classes"/>
+        <pathelement location="${jasmin.location}/libs/java_cup.jar"/>
+    </path>
+    <path id="Plug-in Dependencies.libraryclasspath"/>
+    <path id="heros.classpath">
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+        <pathelement location="${heros.location}/bin"/>
+        <pathelement location="${heros.location}/guava-14.0.1.jar"/>
+        <pathelement location="${heros.location}/slf4j-api-1.7.5.jar"/>
+        <pathelement location="${heros.location}/junit.jar"/>
+        <pathelement location="${heros.location}/org.hamcrest.core_1.3.0.jar"/>
+    </path>
+    <path id="soot.classpath">
+        <pathelement location="${soot.location}/classes"/>
+        <path refid="jasmin.classpath"/>
+        <path refid="heros.classpath"/>
+        <pathelement location="${soot.location}/libs/polyglot.jar"/>
+        <pathelement location="${soot.location}/libs/AXMLPrinter2.jar"/>
+        <pathelement location="${soot.location}/libs/hamcrest-all-1.3.jar"/>
+        <pathelement location="${soot.location}/libs/junit-4.11.jar"/>
+        <pathelement location="${soot.location}/libs/dexlib2-2.0.3-dev.jar"/>
+        <pathelement location="${soot.location}/libs/util-2.0.3-dev.jar"/>
+        <pathelement location="${soot.location}/libs/asm-debug-all-5.0.3.jar"/>
+    </path>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="soot-infoflow.classpath">
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+        <pathelement location="${soot-infoflow.location}/bin"/>
+        <path refid="soot.classpath"/>
+        <path refid="heros.classpath"/>
+        <pathelement location="${soot-infoflow.location}/lib/cos.jar"/>
+        <pathelement location="${soot-infoflow.location}/lib/j2ee.jar"/>
+        <pathelement location="${soot-infoflow.location}/lib/slf4j-api-1.7.5.jar"/>
+        <pathelement location="${soot-infoflow.location}/lib/slf4j-simple-1.7.5.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="handleflowdroid.classpath">
+        <pathelement location="${handleflowdroid.location}/bin"/>
+    </path>
+    <path id="soot-infoflow-android.classpath">
+        <pathelement location="${soot-infoflow-android.location}/bin"/>
+        <path refid="soot.classpath"/>
+        <pathelement location="${soot-infoflow-android.location}/lib/polyglot.jar"/>
+        <pathelement location="${soot-infoflow-android.location}/lib/AXMLPrinter2.jar"/>
+        <pathelement location="${soot-infoflow-android.location}/lib/commons-io-2.4.jar"/>
+        <path refid="soot-infoflow.classpath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="${soot-infoflow-android.location}/lib/axml-2.0.jar"/>
+        <path refid="handleflowdroid.classpath"/>
+    </path>
+    <path id="revealdroid.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/axml-2.0.jar"/>
+        <pathelement location="lib/slf4j-api-1.7.5.jar"/>
+        <pathelement location="lib/slf4j-simple-1.7.5.jar"/>
+        <pathelement location="lib/weka.jar"/>
+        <pathelement location="lib/jcommander-1.36-SNAPSHOT.jar"/>
+        <pathelement location="lib/features.jar"/>
+	<pathelement location="lib/android.jar"/>
+	<pathelement location="lib/apk-parser-all.jar"/>
+        <path refid="soot.classpath"/>
+        <path refid="soot-infoflow.classpath"/>
+        <path refid="soot-infoflow-android.classpath"/>
+        <path refid="heros.classpath"/>
+        <path refid="jasmin.classpath"/>
+        <!--<path refid="handleflowdroid.classpath"/>-->
+        <pathelement location="../../../../../../../home/joshua/android-sdks/platforms/android-20/android.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.uad"/>
+                <exclude name="**/*.ucd"/>
+                <exclude name="**/*.uld"/>
+                <exclude name="**/*.upd"/>
+                <exclude name="**/*.udd"/>
+                <exclude name="**/*.uod"/>
+                <exclude name="**/*.usd"/>
+                <exclude name="**/*.utd"/>
+                <exclude name="**/*.uud"/>
+                <exclude name="**/*.odd"/>
+                <exclude name="**/*.ead"/>
+                <exclude name="**/*.ecd"/>
+                <exclude name="**/*.eld"/>
+                <exclude name="**/*.epd"/>
+                <exclude name="**/*.edd"/>
+                <exclude name="**/*.eod"/>
+                <exclude name="**/*.esd"/>
+                <exclude name="**/*.etd"/>
+                <exclude name="**/*.eud"/>
+                <exclude name="**/*.urd"/>
+                <exclude name="**/*.uml"/>
+                <exclude name="**/*.ecore"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="build.xml" dir="${handleflowdroid.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${heros.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${jasmin.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${soot.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${soot-infoflow.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${soot-infoflow-android.location}" inheritAll="false" target="clean"/>
+    </target>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects">
+        <ant antfile="build.xml" dir="${handleflowdroid.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${heros.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${jasmin.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${soot.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${soot-infoflow.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${soot-infoflow-android.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="revealdroid.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="test1">
+        <java classname="revealdroid.test1" failonerror="true" fork="yes">
+            <classpath refid="revealdroid.classpath"/>
+        </java>
+    </target>
+    <target name="ReadCovertXml">
+        <java classname="revealdroid.ReadCovertXml" failonerror="true" fork="yes">
+            <arg line="/home/joshua/malgenome/output/ffe62967b75aab56710110b26baa69acd47a81dd.xml"/>
+            <classpath refid="revealdroid.classpath"/>
+        </java>
+    </target>
+    <target name="test1 josh">
+        <java classname="revealdroid.test1" failonerror="true" fork="yes">
+            <arg line="-a /home/joshua/android-sdks/platforms/android-20/android.jar -m /home/joshua/malgenome/apks"/>
+            <classpath refid="revealdroid.classpath"/>
+        </java>
+    </target>
+    <target name="test1 josh benign">
+        <java classname="revealdroid.test1" failonerror="true" fork="yes">
+            <arg line="-m /media/joshua/ext4_backup/home/joshua/googleplay/apks -t 1"/>
+            <classpath refid="revealdroid.classpath"/>
+        </java>
+    </target>
+    <target name="test1 help">
+        <java classname="revealdroid.test1" failonerror="true" fork="yes">
+            <classpath refid="revealdroid.classpath"/>
+        </java>
+    </target>
+    <target name="IntentFeaturesAdder">
+        <java classname="revealdroid.IntentFeaturesAdder" failonerror="true" fork="yes">
+            <classpath refid="revealdroid.classpath"/>
+        </java>
+    </target>
+    <target name="AllZeroBenignInstanceArffCleaner data.arff">
+        <java classname="revealdroid.AllZeroBenignInstanceArffCleaner" failonerror="true" fork="yes">
+            <arg line="data.arff"/>
+            <classpath refid="revealdroid.classpath"/>
+        </java>
+    </target>
+    <target name="test1 josh obfuscated">
+        <java classname="revealdroid.test1" failonerror="true" fork="yes">
+            <arg line="-m /home/joshua/malgenome/obfuscated -t 10"/>
+            <classpath refid="revealdroid.classpath"/>
+        </java>
+    </target>
+</project>

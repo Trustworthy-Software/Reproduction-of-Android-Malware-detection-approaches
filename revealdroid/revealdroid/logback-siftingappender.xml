@@ -1,0 +1,27 @@
+<configuration>
+
+	<appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
+		<!-- in the absence of the class attribute, it is assumed that the desired 
+			discriminator type is ch.qos.logback.classic.sift.MDCBasedDiscriminator -->
+		<discriminator>
+			<key>apkName</key>
+			<defaultValue>unknown</defaultValue>
+		</discriminator>
+		<sift>
+			<appender name="FILE-${tool-name}-${apkName}" class="ch.qos.logback.core.FileAppender">
+				<file>logs/${tool-name}-${apkName}.log</file>
+				<append>false</append>
+				<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+					by default -->
+				<encoder>
+					<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n
+					</pattern>
+				</encoder>
+			</appender>
+		</sift>
+	</appender>
+
+	<root level="DEBUG">
+		<appender-ref ref="SIFT" />
+	</root>
+</configuration>

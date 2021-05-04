@@ -1,0 +1,5 @@
+<android.app.Activity: void <clinit>()> ==> ['<android.app.Activity: void <clinit>()>\n']
+<android.os.Bundle: void <init>()> ==> ['<java.util.HashMap: void <init>()>\n', '<java.lang.Object: void <init>()>\n']
+<dummyMainClass: void dummyMainMethod(java.lang.String[])> ==> ['<android.app.Activity: void <clinit>()>\n', '<android.os.Bundle: void <clinit>()>\n', '<android.os.Bundle: void <init>()>\n', '<org.me.androidapplication1.MoviePlayer: void <init>()>\n', '<org.me.androidapplication1.MoviePlayer: void onCreate(android.os.Bundle)>\n']
+<android.os.Bundle$1: void <init>()> ==> ['<java.lang.Object: void <init>()>\n']
+<android.os.Bundle: void <clinit>()> ==> ['<android.os.Bundle: void <clinit>()>\n', '<java.util.Collections: java.util.Map unmodifiableMap(java.util.Map)>\n', '<android.os.Bundle: void <clinit>()>\n', '<android.os.Bundle: void <clinit>()>\n', '<android.os.Bundle: void <clinit>()>\n', '<android.os.Bundle$1: void <init>()>\n', '<java.util.HashMap: void <init>()>\n', '<android.os.Bundle: void <init>()>\n']
